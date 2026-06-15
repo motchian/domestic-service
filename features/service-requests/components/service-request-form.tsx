@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { Textarea } from "@/components/ui/textarea";
 import { candidateSkills, cities, serviceTypes } from "@/lib/constants/app";
+import { apiUrl } from "@/lib/api/url";
 import { serviceRequestSchema, type ServiceRequestInput } from "@/lib/validations/service-request";
 
 const steps = ["Type de service", "Localisation", "Horaires", "Budget", "Exigences", "Urgence", "Confirmation"];
@@ -54,7 +55,7 @@ export function ServiceRequestForm() {
 
   async function onSubmit(values: ServiceRequestInput) {
     setSaved(false);
-    await fetch("/api/service-requests", {
+    await fetch(apiUrl("/api/service-requests"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values)

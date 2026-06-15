@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { Textarea } from "@/components/ui/textarea";
 import { candidateSkills, cities } from "@/lib/constants/app";
+import { apiUrl } from "@/lib/api/url";
 import { candidateOnboardingSchema, type CandidateOnboardingInput } from "@/lib/validations/candidate";
 
 const steps = [
@@ -63,7 +64,7 @@ export function CandidateOnboardingForm() {
 
   async function onSubmit(values: CandidateOnboardingInput) {
     setSaved(false);
-    await fetch("/api/candidates", {
+    await fetch(apiUrl("/api/candidates"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values)
