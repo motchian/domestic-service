@@ -6,7 +6,8 @@ services:
     env: node
     plan: free
     buildCommand: "npm install && npm run build"
-    startCommand: "npm run start"
+    # Ensure Next binds to the port Render provides
+    startCommand: "npm run start -- -p $PORT"
     envVars:
       - key: SUPABASE_SERVICE_ROLE_KEY
         sync: false
