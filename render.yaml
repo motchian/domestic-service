@@ -1,0 +1,16 @@
+# Render manifest for backend service
+# Replace placeholders with your repo and environment values before deploying
+services:
+  - type: web_service
+    name: homecare-backend
+    env: node
+    plan: free
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm run start"
+    envVars:
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: DATABASE_URL
+        sync: false
